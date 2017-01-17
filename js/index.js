@@ -8,7 +8,8 @@ var lib = ffi.Library('./libffi_async_demo', {
 var callback = function() {
     var state = {x: "tada"};
 
-    return ffi.Callback('void', ['pointer'], function() {
+    return ffi.Callback('void', ['pointer', ref.types.int32], function(ctx, code) {
+        console.log("getting back: ", code);
         console.log(state.x);
     })
 }();

@@ -8,11 +8,11 @@ unsafe impl Send for OpaqueCtx {}
 
 #[no_mangle]
 pub unsafe extern "C" fn register(ctx: *mut c_void,
-                                  cb: unsafe extern "C" fn(*mut c_void)) {
+                                  cb: unsafe extern "C" fn(*mut c_void, i32)) {
     println!("{:p}", ctx);
     let ctx = OpaqueCtx(ctx);
     let _ = thread::spawn(move || {
            let ctx = ctx.0;
-           cb(ctx);
+           cb(ctx, -1003);
      });
 }
