@@ -60,7 +60,7 @@ pub unsafe extern "C" fn get_file(ctx: *mut c_void,
                                       print!("Updated");
     println!("{:p}", ctx);
     let ctx = OpaqueCtx(ctx);
-    let mut meta = vec![0, 208, 109];
+    let mut meta = vec![];
 
     let ptr = meta.as_mut_ptr();
     let len = meta.len();
